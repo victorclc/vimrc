@@ -1,2 +1,6 @@
 # vimrc
-This is my .vimrc file
+
+Dependencies
+
+Vundle: https://github.com/VundleVim/Vundle.vim
+
