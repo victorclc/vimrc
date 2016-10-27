@@ -9,7 +9,6 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'majutsushi/tagbar'
 Plugin 'pangloss/vim-javascript'
-Plugin 'scrooloose/syntastic'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -27,6 +26,7 @@ set showmatch
 set paste
 set ruler
 set laststatus=2
+set hlsearch
 
 " For the tagbar plugin
 nmap <F8> :TagbarToggle<CR>
@@ -40,7 +40,12 @@ let g:syntastic_check_on_wq = 0
 " Format xml files
 au FileType xml exe ":silent 1,$!xmllint --format --recover - 2>/dev/null"
 
+" Some custom commands
+command! MakeTags ! ctags -R .
+command -nargs=+ GG :execute "grep -Isr -a --text --exclude='*.o*' --exclude='*.so*' --exclude='tags' --exclude='*.swp' --exclude='beet' --exclude='*.o' --exclude='*.files' --exclude='*.conf' --exclude='*.mk' " . "<args>" . " *" <Bar> cw
+
 " Binds
 map <C-t> <esc>:tabnew<CR>
+map <F4> :execute "grep -Isr -a --text --exclude='*.o*' --exclude='*.so*' --exclude='tags' --exclude='*.swp' --exclude='beet' --exclude='*.o' --exclude='*.files' --exclude='*.conf' --exclude='*.mk' " . expand("<cword>") . " *" <Bar> cw<CR>
 
 " Go to definition open a vertical split
