@@ -23,7 +23,6 @@ set shiftwidth=4
 set expandtab
 set number
 set showmatch
-set paste
 set ruler
 set laststatus=2
 set hlsearch
